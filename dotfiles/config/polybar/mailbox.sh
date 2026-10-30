@@ -4,7 +4,7 @@ adapta_red=$(xrdb -query | grep color1: | awk '{print $2}')
 adapta_yellow=$(xrdb -query | grep color3: | awk '{print $2}')
 fg=$(xrdb -query | grep foreground: | awk '{print $2}')
 
-# gpg --fingerprint --with-keygrip ask1234560@gmail.com
+# gpg --with-keygrip --list-secret-keys
 keygrip="3EF45C5C4F189FE3ED00D6105652C0C336D924AD"
 
 is_key_cached(){

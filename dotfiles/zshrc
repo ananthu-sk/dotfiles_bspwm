@@ -15,17 +15,13 @@ HISTSIZE=10000
 SAVEHIST=$HISTSIZE
 HISTFILE="$XDG_CACHE_HOME/zsh/history"
 
-autoload -Uz compinit
-if [[ -n  $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION(#qN.mh+24) ]]
-then
-    compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
-else
-    compinit -C
-fi
-
-setopt histexpiredupsfirst histignorespace nobanghist nobeep
+setopt histexpiredupsfirst histignorespace banghist nobeep
 # setopt sharehistory                 # share history between sessions
 setopt incappendhistory             # append history at same time, not at shell exits
+
+dump_file="$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
+autoload -Uz compinit
+compinit -d "$dump_file"
 
 # startx
 if [ "$(tty)" = "/dev/tty1" ]
